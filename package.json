@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "backup": "node \"src/backup.ts\" ./src/assets/source ./src/assets/backups"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +15,6 @@
     "@types/node": "^26.6.6",
     "@types/ws": "^8.18.2",
     "jest": "^30.5.2",
-    "ts-node": "^10.9.2",
     "typescript": "^7.0.2"
   }
 }
