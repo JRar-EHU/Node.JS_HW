@@ -1,0 +1,1 @@
+export type JsonBody = { q: string } | { error: string };
