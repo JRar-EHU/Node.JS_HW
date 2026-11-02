@@ -6,7 +6,8 @@
   "scripts": {
     "backup": "node  \"src/backup.ts\" ./src/assets/source ./src/assets/backups",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "start": "node src/server.ts"
+    "start": "node src/server.ts",
+    "export": "node --experimental-strip-types src/exportCsv.ts"
   },
   "keywords": [],
   "author": "",

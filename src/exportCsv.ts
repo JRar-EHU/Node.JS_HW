@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import csv from 'csvtojson';
-import {IRow, IStats} from "./types.ts";
+import type {IRow, IStats} from "./types.ts";
 
 function parseRating(raw: string): number | null {
     const n = parseFloat(raw.replace(',', '.'));
@@ -25,7 +25,7 @@ export async function exportCsvToTxt(
 
     const readStream = fs.createReadStream('./src/assets/movies.csv');
     const writeStream = fs.createWriteStream('./src/assets/movies.txt');
-    const csvStream = csv().fromStream(readStream);
+    const csvStream = csv({ delimiter: ';' }).fromStream(readStream);
 
     return new Promise((resolve, reject) => {
         const fail = (err: Error) => {
@@ -89,3 +89,10 @@ export async function exportCsvToTxt(
         });
     });
 }
+
+exportCsvToTxt()
+    .then((stats) => console.log('done:', stats))
+    .catch((err) => {
+        console.error('failed:', err);
+        process.exit(1);
+    });
