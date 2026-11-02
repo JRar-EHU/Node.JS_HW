@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "backup": "node \"src/backup.ts\" ./src/assets/source ./src/assets/backups"
+    "backup": "node  \"src/backup.ts\" ./src/assets/source ./src/assets/backups",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "start": "node src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,7 @@
     "@types/node": "^26.6.6",
     "@types/ws": "^8.18.2",
     "jest": "^30.5.2",
-    "typescript": "^7.0.2"
+    "ts-jest": "^29.4.15",
+    "typescript": "^6.0.3"
   }
 }
