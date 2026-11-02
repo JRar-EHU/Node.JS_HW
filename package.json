@@ -18,5 +18,8 @@
     "jest": "^30.5.2",
     "ts-jest": "^29.4.15",
     "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "csvtojson": "^2.0.14"
   }
 }
