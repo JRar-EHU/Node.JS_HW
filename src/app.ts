@@ -1,8 +1,9 @@
 import { createServer, type ServerResponse } from 'node:http';
+import {handleUsers} from "./users.ts";
 
 const hostname = '127.0.0.1';
 
-function sendJson(
+export function sendJson(
     res: ServerResponse,
     statusCode: number,
     body: unknown,
@@ -16,9 +17,18 @@ function sendJson(
 }
 
 export function createNewServer() {
-    return createServer((req, res) => {
+    let nextId = 1;
+    return createServer( async (req, res) => {
         const url = new URL(req.url ?? '/', `http://${req.headers.host ?? hostname}`);
         const path = url.pathname;
+
+        if (path === '/users') {
+            const data = await handleUsers(req, res);
+            if (!data) return;
+
+            const user = { id: nextId++, ...data };
+            return sendJson(res, 201, user, { Location: `/users/${user.id}` });
+        }
 
         if (path !== '/search') {
             return sendJson(res, 404, { error: 'Not Found' });
